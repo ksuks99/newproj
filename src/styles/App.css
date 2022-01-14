@@ -1,0 +1,59 @@
+.note-card-header {
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+}
+
+.note-author {
+  color: #00c;
+  margin-right: 0.5em;
+}
+
+.remove-note-button {
+  /* margin-bottom: 0.3em; */
+}
+
+.form-input {
+  margin-bottom: 1em;
+}
+
+.note-container {
+  float: right;
+}
+
+.note-header {
+  margin: 0 0 1em 0;
+}
+
+.note-name {
+  color: #444;
+  margin-left: 0.5em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+body, html, .App, #root, .outer {
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  margin: 20;
+  width: 50%;
+}
+
+.outer {
+  width: 35em;
+  margin: 0 auto;
+}
