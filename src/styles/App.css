@@ -57,3 +57,22 @@ body, html, .App, #root, .outer {
   width: 35em;
   margin: 0 auto;
 }
+
+
+.App {
+  text-align: center;
+}
+
+.test-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-form input {
+  width: 300px;
+  margin: 10px;
+}
+
+

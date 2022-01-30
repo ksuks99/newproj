@@ -12,7 +12,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="login" element={<LoginPage />} />
-      <Route path="register" element={<RegisterPage />} />
+      {/* <Route path="register" element={<RegisterPage />} /> */}
       <Route path="notes" element={<EditNotesPage />} />
       <Route path="*" element={<HomePage />} />
     </Routes>

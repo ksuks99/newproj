@@ -2,10 +2,13 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export default function Note(props) {
-  const { enableEditMode, deleteNote, noteIndex, name, text, author } = props;
+const divStyle = {
+  border: "solid #eee 1px",
+  marginTop: "5px"
+}
 
-  const note = {noteIndex, name, text};
+export default function Note(props) {
+  const { enableEditMode, deleteNote, note } = props;
 
   return (
     <div className="note-header">
@@ -14,17 +17,17 @@ export default function Note(props) {
           <Card.Header className="note-card-header">
             <div>
               <Button className="edit-note-button" variant="outline-success" onClick={() => enableEditMode(note)}>Edit</Button>
-                <b className="note-name">{name}</b>
+                <b className="note-name">{note.ful_name}</b>
             </div>
             <div className="note-container">
-            <span className="note-author">{`@${author}`}</span>
-              <Button className="remove-note-button" variant="outline-danger" onClick={() => deleteNote(noteIndex)}>✕</Button>
+              <Button className="remove-note-button" variant="outline-danger" onClick={() => deleteNote(note.id)}>✕</Button>
             </div>
           </Card.Header>
           <Card.Body>
-           {text.split('\n').map((row, i) =>
-              <p key={i.toString()}>{row}</p>
-            )}
+            <div style={divStyle}> id: {note.id} </div>
+            <div style={divStyle}> email: {note.email} </div>
+            <div style={divStyle}> login: {note.login} </div>
+            <div style={divStyle}> password: {note.password} </div>
           </Card.Body>
         </Card>
       </div>

@@ -9,9 +9,6 @@ module.exports = {
   entry: {
     app: './src/index.js',
   },
-  // resolve: {
-  //   extensions: ['jsx'],
-  // },
   output: {
     path: path.resolve(__dirname, ENV_PROD ? 'dist' : 'dist-dev'),
     filename: (ENV_PROD ? '[name].bundle.min.js' : '[name].bundle.js'),
@@ -37,7 +34,7 @@ module.exports = {
               '@babel/preset-react',
             ],
             plugins: [
-              // '@babel/plugin-transform-runtime',
+              '@babel/plugin-transform-runtime',
               '@babel/plugin-proposal-class-properties',
             ]
           }

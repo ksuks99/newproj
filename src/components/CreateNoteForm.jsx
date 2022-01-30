@@ -3,35 +3,57 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export default function CreateNoteForm(props) {
-  const [newNoteText, setNewNoteText] = React.useState("");
-  const [newNoteName, setNewNoteName] = React.useState("");
+  const [noteId, setNoteId] = React.useState("");
+  const [noteFulName, setNoteFulName] = React.useState("");
+  const [noteEmail, setNoteEmail] = React.useState("");
+  const [noteLogin, setNoteLogin] = React.useState("");
+  const [notePassword, setNotePassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
 
-  const { currentUser, addNote } = props;
+  const { addNote, isValidNote } = props;
 
   const handleCreateNote = e => {
     e.preventDefault();
-    if (!newNoteText) return;
-    addNote({
-      name: newNoteName,
-      text: newNoteText,
-      author: currentUser,
-    });
-    setNewNoteText("");
-    setNewNoteName("");
+    const newNote = {
+      id: parseInt(noteId),
+      ful_name: noteFulName,
+      email: noteEmail,
+      login: noteLogin,
+      password: notePassword,
+    };
+    if (!isValidNote(newNote)) {
+      setErrorMessage("Поля id, ful_name, login, password являются обязательными")
+      return;
+    }
+    addNote(newNote);
+
+    setNoteId("");
+    setNoteFulName("");
+    setNoteEmail("");
+    setNoteLogin("");
+    setNotePassword("");
+    setErrorMessage("");
   }
 
   return (
     <Form onSubmit={handleCreateNote}>
       <Form.Group>
+        <div style={{color: "red", height: "1.5em"}}>
+          { errorMessage }
+        </div>
         <Form.Label className="new-note-caption">
           Добавление новой заметки
         </Form.Label>
-        <Form.Control type="text" className="form-input" value={newNoteName} onChange={e => setNewNoteName(e.target.value)} placeholder="Название заметки" />
-        <Form.Control as="textarea" rows="5" name="note text" value={newNoteText} onChange={event => setNewNoteText(event.target.value)} placeholder="Текст заметки" />
+        <Form.Control type="text" className="form-input" value={noteId} onChange={e => setNoteId(e.target.value)} placeholder="id (введите целое число)" />
+        <Form.Control type="text" className="form-input" value={noteFulName} onChange={e => setNoteFulName(e.target.value)} placeholder="Наименование заметки" />
+        <Form.Control type="text" className="form-input" value={noteEmail} onChange={e => setNoteEmail(e.target.value)} placeholder="email" />
+        <Form.Control type="text" className="form-input" value={noteLogin} onChange={e => setNoteLogin(e.target.value)} placeholder="Логин" />
+        <Form.Control type="text" className="form-input" value={notePassword} onChange={e => setNotePassword(e.target.value)} placeholder="Пароль" />
       </Form.Group>
       <Button style={{ marginTop: "1em" }} variant="primary" type="submit">
         Добавить
       </Button>
+
     </Form>
   )
 }
